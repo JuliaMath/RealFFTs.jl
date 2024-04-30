@@ -1,21 +1,21 @@
-import RFFT
+import RealFFTs
 using Test, FFTW, LinearAlgebra
 
-@testset "RFFT.jl" begin
+@testset "RealFFTs.jl" begin
     for dims in (1:2, 1, 2)
         for sz in ((5,6), (6,5))
-            pair = RFFT.RCpair{Float64}(undef, sz, dims)
+            pair = RealFFTs.RCpair{Float64}(undef, sz, dims)
             r = @inferred(real(pair))
             c = @inferred(complex(pair))
             b = rand(eltype(r), size(r))
-            pair = RFFT.RCpair(b, dims)
+            pair = RealFFTs.RCpair(b, dims)
             copyto!(r, b)
             copy!(pair, c) # for coverage
-            RFFT.rfft!(pair)
-            RFFT.irfft!(pair)
+            RealFFTs.rfft!(pair)
+            RealFFTs.irfft!(pair)
             @test r ≈ b
-            pfwd = RFFT.plan_rfft!(pair)
-            pinv = RFFT.plan_irfft!(pair)
+            pfwd = RealFFTs.plan_rfft!(pair)
+            pinv = RealFFTs.plan_irfft!(pair)
             pinv(pfwd(pair))
             @test r ≈ b
 

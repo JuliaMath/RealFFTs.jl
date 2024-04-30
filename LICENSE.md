@@ -1,4 +1,4 @@
-The RFFT.jl package is licensed under the MIT "Expat" License:
+The RealFFTs.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2013-2021: Tim Holy.
 >

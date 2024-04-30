@@ -1,4 +1,4 @@
-# RFFT.jl
+# RealFFTs.jl
 
 This is a fork of https://github.com/HolyLab/RFFT.jl with a new UUID such that it can be registered on the General registry.
 
@@ -8,12 +8,12 @@ In-place real FFTs for Julia. Supports "plans" to optimize the algorithm for tra
 
 For example
 ```julia
-import RFFT
+import RealFFTs
 
 a = rand(Float64, 100, 150)
 
 # initialize a buffer 'RCpair' that contains a real and complex space
-buf = RFFT.RCpair{Float64}(undef, size(a))
+buf = RealFFTs.RCpair{Float64}(undef, size(a))
 ```
 
 `real(buf)` views the underlying memory buffer as an array reals, while `complex(buf)` views the same
@@ -23,7 +23,7 @@ If you'll be performing lots of FFTs on this buffer, it's best to create an opti
 
 ```julia
 # create the plan
-plan = RFFT.plan_rfft!(buf; flags=FFTW.MEASURE)
+plan = RealFFTs.plan_rfft!(buf; flags=FFTW.MEASURE)
 
 # use the plan and buffer on a new array
 new = rand(Float64, 100, 150)
