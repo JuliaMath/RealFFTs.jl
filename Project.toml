@@ -1,4 +1,4 @@
-name = "RFFT"
+name = "RealFFTs"
 uuid = "3645faec-0534-4e91-afef-021db0981eec"
 authors = ["Tim Holy <tim.holy@gmail.com>"]
 version = "1.0.0"
@@ -10,7 +10,8 @@ LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 [compat]
 FFTW = "1"
 LinearAlgebra = "1"
-julia = "1.6"
+Test = "1"
+julia = "1.10"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
